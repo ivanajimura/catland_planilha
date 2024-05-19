@@ -50,12 +50,25 @@ class Updater:
         """
         lines = message.split('\n')
         data = {}
-        for line in lines:
+        for line in lines[1:-1]:
+            try:
+                if len(line.split(":")) == 2:
+                    data[line.split(":")[0].strip()] = line.split(":")[1].strip()
+                if len(line.split(":")) > 2:
+                    temp_data = line
+                    temp_data = temp_data.replace(line.split(":")[0].strip(),"")
+                    temp_data = temp_data[2:]
+                    data[line.split(":")[0].strip()] = temp_data
+            except:
+                pass
+            """
             if line.startswith("Nome:"):
                 data["Nome"] = line.split(":")[1].strip()
             elif line.startswith("Cód. Simplesvet:"):
                 data["Cód. Simplesvet"] = line.split(":")[1].strip()
             elif line.startswith("Status:"):
                 data["Status"] = line.split(":")[1].strip()
+            """
             # Add more conditions for other data to parse if needed
         return data
+    
