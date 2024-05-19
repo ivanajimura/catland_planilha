@@ -1,26 +1,19 @@
 import os
-import json
 from typing import List
+from .settings import Settings
 
 class FileHelper:
     """Helper class to manage file operations in the input folder."""
 
-    def __init__(self, config_path: str):
+    def __init__(self, settings: Settings):
         """
-        Initialize FileHelper with the path to the configuration file.
+        Initialize FileHelper with the Settings instance.
 
         Args:
-            config_path (str): The path to the configuration JSON file.
+            settings (Settings): An instance of the Settings class.
         """
-        self.config_path = config_path
+        self.folder_path = settings.input_folder_path
         self.contents = []
-        self._load_config()
-
-    def _load_config(self) -> None:
-        """Loads the configuration from the JSON file."""
-        with open(self.config_path, 'r') as file:
-            config = json.load(file)
-            self.folder_path = config['input_folder_path']
 
     def read_files(self) -> None:
         """Reads all text files in the folder and stores their contents in a variable."""
@@ -44,3 +37,27 @@ class FileHelper:
             List[str]: List of strings containing the contents of each file.
         """
         return self.contents
+
+    def append_to_file(self, file_path: str, content: str) -> None:
+        """
+        Append content to a file.
+
+        Args:
+            file_path (str): The path to the file.
+            content (str): The content to append.
+        """
+        with open(file_path, 'a') as file:
+            file.write(content + '\n')
+
+    def read_file(self, file_path: str) -> List[str]:
+        """
+        Read content from a file.
+
+        Args:
+            file_path (str): The path to the file.
+
+        Returns:
+            List[str]: List of strings containing each line of the file.
+        """
+        with open(file_path, 'r') as file:
+            return file.readlines()

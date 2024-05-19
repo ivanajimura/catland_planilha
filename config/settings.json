@@ -1,10 +1,15 @@
 {
-    "input_folder_path": "input",
+    "input_folder_path": "input/",
+    
+    
     "messages": {
-        "trigger_word": "UPDATE",
+        "trigger_word": "Atualização",
+        "ending_word": "Fim!",
         "column_name": "Status",
         "column_id": "A"
     },
+
+
     "google_sheets": {
         "link": "https://docs.google.com/spreadsheets/d/your_sheet_id",
         "tab": "Sheet1",

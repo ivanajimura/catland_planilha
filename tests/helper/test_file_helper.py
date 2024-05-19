@@ -2,6 +2,7 @@ import os
 import json
 import pytest
 from src.helper.file_helper import FileHelper
+from src.helper.settings import Settings
 
 @pytest.fixture
 def setup_files_and_config(tmp_path):
@@ -40,21 +41,24 @@ def setup_files_and_config(tmp_path):
 
 def test_read_files(setup_files_and_config):
     config_path = setup_files_and_config
-    file_helper = FileHelper(str(config_path))
+    settings = Settings(str(config_path))
+    file_helper = FileHelper(settings)
     file_helper.read_files()
     assert file_helper.get_contents() == ["This is message 1", "This is message 2"]
 
 def test_remove_files(setup_files_and_config):
     config_path = setup_files_and_config
-    file_helper = FileHelper(str(config_path))
+    settings = Settings(str(config_path))
+    file_helper = FileHelper(settings)
     file_helper.read_files()
     file_helper.remove_files()
-    input_folder = json.load(open(config_path))['input_folder_path']
+    input_folder = settings.input_folder_path
     assert len(os.listdir(input_folder)) == 0
 
 def test_get_contents(setup_files_and_config):
     config_path = setup_files_and_config
-    file_helper = FileHelper(str(config_path))
+    settings = Settings(str(config_path))
+    file_helper = FileHelper(settings)
     assert file_helper.get_contents() == []
     file_helper.read_files()
     assert file_helper.get_contents() == ["This is message 1", "This is message 2"]
