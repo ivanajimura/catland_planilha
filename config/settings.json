@@ -31,7 +31,7 @@
         "status_col": "B",
         "azure_col": "C",
         "simplesvet_col": "D",
-        "nome_col": "E",
+        "name_col": "E",
         "ngo_entry_col": "F",
         "ngo_exit_col": "G",
         "vaccination_card_col": "I",        
