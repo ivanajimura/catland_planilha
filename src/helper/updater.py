@@ -61,14 +61,6 @@ class Updater:
                     data[line.split(":")[0].strip()] = temp_data
             except:
                 pass
-            """
-            if line.startswith("Nome:"):
-                data["Nome"] = line.split(":")[1].strip()
-            elif line.startswith("Cód. Simplesvet:"):
-                data["Cód. Simplesvet"] = line.split(":")[1].strip()
-            elif line.startswith("Status:"):
-                data["Status"] = line.split(":")[1].strip()
-            """
-            # Add more conditions for other data to parse if needed
+        data["Mensagem Original"] = message.replace("\n", "\n\n")
         return data
     

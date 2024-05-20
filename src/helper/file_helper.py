@@ -1,4 +1,7 @@
+import markdown
 import os
+import webbrowser
+
 from typing import List
 from .settings import Settings
 
@@ -75,3 +78,29 @@ class FileHelper:
         """
         with open(file_path, 'r') as file:
             return file.readlines()
+
+    @staticmethod
+    def convert_md_to_html(md_file_path: str, html_file_path: str):
+        """
+        Convert a markdown file to an HTML file.
+
+        Args:
+            md_file_path (str): Path to the markdown file.
+            html_file_path (str): Path to the output HTML file.
+        """
+        # Read the markdown file
+        with open(md_file_path, 'r', encoding='utf-8') as md_file:
+            md_content = md_file.read()
+
+        # Convert markdown content to HTML
+        html_content = markdown.markdown(md_content)
+
+        # Write the HTML content to a file
+        with open(html_file_path, 'w', encoding='utf-8') as html_file:
+            html_file.write(html_content)
+
+        print(f"Markdown file has been converted to HTML and saved as {html_file_path}")
+
+    @staticmethod
+    def open_file_in_browser(url: str):
+        webbrowser.open(url = url)
