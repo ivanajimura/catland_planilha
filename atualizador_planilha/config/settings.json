@@ -1,10 +1,10 @@
 {
     "input_folder_path": "input/",
-    "log_file_path": "log.txt",
+    "log_file_path": "erros.md",
     
     "messages": {
         "trigger_word": "Atualização",
-        "ending_word": "Fim!",
+        "ending_word": "#",
         "valid_status_list": ["Adotado", "Arquivado", "CED", "Disponível", "Estrelinha", "Indisponível", "LT Eterno", "Pendente"],
         "valid_local_list": ["Cafofinho", "Hospital Externo", "Petz", "Protetor Parceiro", "Quarentena Externa", "Sede", "Pendente", "Ronron Cat Café"],
         "valid_bool_list": ["Sim", "Não", "Pendente", "N/A"],

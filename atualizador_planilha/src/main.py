@@ -291,9 +291,12 @@ def main():
     Logger.write_to_log_file(message=f'-Alterações com problemas: {n_invalid_updates}.\n')
     Logger.write_to_log_file(message=f'Terminado: ')
     Logger.write_timestamp()
-
     FileHelper.convert_md_to_html(md_file_path = settings.log_file_path, html_file_path= "errors.html")
     FileHelper.open_file_in_browser(url = "errors.html")
+
+    # Cleaning up txt file
+    #file_helper.remove_files()
+    #file_helper.create_empty_txt_file()
 
 
 if __name__ == "__main__":

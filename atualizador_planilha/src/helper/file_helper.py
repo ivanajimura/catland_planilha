@@ -33,6 +33,17 @@ class FileHelper:
         for filename in os.listdir(self.folder_path):
             if filename.endswith(".txt"):
                 os.remove(os.path.join(self.folder_path, filename))
+    @staticmethod
+    def create_empty_txt_file(self):
+        """
+        Create an empty text file.
+
+        Args:
+            file_path (str): Path to the text file to create.
+        """
+        
+        with open(os.path.join(self.folder_path, "mensagens.txt"), 'w') as file:
+            pass  # Create an empty file
 
     def get_contents(self) -> List[str]:
         """
